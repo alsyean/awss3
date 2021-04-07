@@ -1,0 +1,36 @@
+cloud:
+  aws:
+    credentials:
+      instance-profile: true
+    stack:
+      auto: false
+    s3:
+      bucket:
+        abee-photozone
+
+
+logging:
+  level:
+    "org.hibernate": Info
+    com:
+      amazonaws:
+        util:
+            EC2MetadataUtils: error
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 500MB
+      max-request-size: 500MB
+
+
+server:
+  port: 8080
+  tomcat:
+    basedir: /home/ec2-user/
+    accesslog:
+      enabled: true
+      pattern: "%t %a %s \"%r\" %b (%D ms)"
+      directory: tomcat-log
+      suffix: .log
+      prefix: tomcat
